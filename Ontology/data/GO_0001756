@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://www.ontobee.org/ontology/view/GO?iri=http://purl.obolibrary.org/obo/GO_0001756"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:obo="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ns4="http://purl.obolibrary.org/obo/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115"/>
+    <AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+    <AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasOBONamespace"/>
+    <AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+    <AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#id"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000050 -->
+
+    <ObjectProperty rdf:about="http://purl.obolibrary.org/obo/BFO_0000050">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">part of</rdfs:label>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0001756 -->
+
+    <Class rdf:about="http://purl.obolibrary.org/obo/GO_0001756">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">somitogenesis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GO_0009952"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GO_0035282"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/GO_0048646"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+                <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GO_0043009"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000050"/>
+                <someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/GO_0061053"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <obo:id rdf:datatype="http://www.w3.org/2001/XMLSchema#string">GO:0001756</obo:id>
+        <ns4:IAO_0000115 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The formation of mesodermal clusters that are arranged segmentally along the anterior posterior axis of an embryo.</ns4:IAO_0000115>
+        <obo:hasDbXref rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wikipedia:Somitogenesis</obo:hasDbXref>
+        <obo:hasOBONamespace rdf:datatype="http://www.w3.org/2001/XMLSchema#string">biological_process</obo:hasOBONamespace>
+        <obo:hasExactSynonym rdf:datatype="http://www.w3.org/2001/XMLSchema#string">formation of mesodermal clusters</obo:hasExactSynonym>
+    </Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0009952 -->
+
+    <Class rdf:about="http://purl.obolibrary.org/obo/GO_0009952">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anterior/posterior pattern specification</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0035282 -->
+
+    <Class rdf:about="http://purl.obolibrary.org/obo/GO_0035282">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">segmentation</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0043009 -->
+
+    <Class rdf:about="http://purl.obolibrary.org/obo/GO_0043009">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">chordate embryonic development</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0048646 -->
+
+    <Class rdf:about="http://purl.obolibrary.org/obo/GO_0048646">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">anatomical structure formation involved in morphogenesis</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0061053 -->
+
+    <Class rdf:about="http://purl.obolibrary.org/obo/GO_0061053">
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">somite development</rdfs:label>
+    </Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.4.1806) http://owlapi.sourceforge.net -->
+
