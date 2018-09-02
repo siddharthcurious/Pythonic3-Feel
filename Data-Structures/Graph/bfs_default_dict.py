@@ -1,7 +1,7 @@
 from collections import defaultdict
 from collections import deque
 
-def dfs(graph, start):
+def bfs(graph, start):
     queue = deque()
     queue.append(start)
     marked = [start]
@@ -12,7 +12,6 @@ def dfs(graph, start):
                 marked.append(n)
                 queue.append(n)
     print(marked)
-
 
 if __name__ == "__main__":
 
@@ -26,4 +25,4 @@ if __name__ == "__main__":
     graph[7].append(9)
     graph[10].extend([8,11])
 
-    dfs(graph, 5)
+    bfs(graph, 5)
