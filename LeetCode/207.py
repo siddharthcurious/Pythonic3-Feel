@@ -1,22 +1,65 @@
-from collections import defaultdict
-class Solution:
+# -*- coding: utf-8 -*-
+# @Author: WuLC
+# @Date:   2016-07-28 11:48:49
+# @Last modified by:   WuLC
+# @Last Modified time: 2016-07-28 21:43:53
+# @Email: liangchaowu5@gmail.com
+
+# pure DFS, TLE
+class Solution(object):
     def canFinish(self, numCourses, prerequisites):
         """
         :type numCourses: int
         :type prerequisites: List[List[int]]
         :rtype: bool
         """
-        graph = defaultdict(list)
-        for p in prerequisites:
-            graph[p[0]].append(p[1])
+        course = [[0 for i in range(numCourses)] for j in range(numCourses)]
+        for s in prerequisites:
+            course[s[0]][s[1]] = 1
 
-        print(graph)
+        visited = [0 for i in range(numCourses)]
+        for i in range(numCourses):
+            if self.dfs(course, i, visited) == False:
+                return False
+        return True
+
+    def dfs(self, course, num, visited):
+        for i in range(len(course[num])):
+            if course[num][i] == 1:
+                visited[num] = 1
+                if visited[i] == 1:
+                    return False
+                else:
+                    if self.dfs(course, i, visited) == False:
+                        return False
+                    visited[num] = 0
 
 
-if __name__ == "__main__":
-
-    s = Solution()
-    numCourses = 2
-    prerequisites = [[1,0],[2,1],[3,1]]
-    r = s.canFinish(numCourses, prerequisites)
-    print(r)
+# Topological Sort
+class Solution(object):
+    def canFinish(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+        indegree = [0 for i in range(numCourses)]
+        connection = {i: [] for i in range(numCourses)}
+        for link in prerequisites:
+            connection[link[1]].append(link[0])
+            indegree[link[0]] += 1
+        zero_indegree = []
+        for i in range(numCourses):
+            if indegree[i] == 0:
+                zero_indegree.append(i)
+        i = 0
+        while i < len(zero_indegree):
+            for node in connection[zero_indegree[i]]:
+                indegree[node] -= 1
+                if indegree[node] == 0:
+                    zero_indegree.append(node)
+            i += 1
+        if len(zero_indegree) == numCourses:
+            return True
+        else:
+            return False
