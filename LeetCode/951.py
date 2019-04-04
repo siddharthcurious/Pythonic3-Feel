@@ -7,12 +7,14 @@ class TreeNode(object):
 
 class Solution(object):
     def flipEquiv(self, root1, root2):
-        """
-        :type root1: TreeNode
-        :type root2: TreeNode
-        :rtype: bool
-        """
-
+        if root1 == None and root2 == None:
+            return True
+        elif root1 == None or root2 == None:
+            return False
+        elif root1.val == root2.val:
+            return (self.flipEquiv(root1.left, root2.left) and self.flipEquiv(root1.right, root2.right)) or \
+                   (self.flipEquiv(root1.left, root2.right) and self.flipEquiv(root1.right, root2.left))
+        return False
 
 
 if __name__ == "__main__":

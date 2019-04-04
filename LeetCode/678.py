@@ -6,22 +6,25 @@ class Solution(object):
         """
         stk = []
         for ch in s:
-            if len(stk) == 0:
+            if ch == "(":
                 stk.append(ch)
             elif ch == ")" and stk[-1] == "(":
                 stk.pop()
+            elif ch == "*":
+                stk.append("*")
+            elif ch == ")" and stk[-1] == "*" and stk[-2] == "(":
+                stk.pop()
+                stk.pop()
+                stk.append("*")
             elif ch == ")" and stk[-1] == "*":
                 stk.pop()
-            else:
-                stk.append(ch)
-        if len(stk) == 0:
-            return True
-        return False
+
+        print(stk)
 
 if __name__ == "__main__":
 
     s = Solution()
 
-    p = "((*))"
+    p = "**))"
     r = s.checkValidString(p)
     print(r)

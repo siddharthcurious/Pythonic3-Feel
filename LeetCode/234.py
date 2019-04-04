@@ -5,17 +5,18 @@ class ListNode(object):
         self.next = None
 
 class Solution(object):
-    def reverse(self, head, marker):
-        t = head
-        prev = None
-        while marker > 0:
-            prev = t
-            t = t.next
-            marker = marker - 1
-        print(prev.val)
-        print(t.val)
 
-    def len(self, head):
+    def printList(self, head):
+        if not head:
+            return
+        t = head
+        while t:
+            print(t.val, end="->")
+            t = t.next
+
+    def length(self, head):
+        if not head:
+            return 0
         temp = head
         c = 0
         while temp:
@@ -28,66 +29,55 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        if head is None:
+        if not head:
             return True
-        if self.len(head) == 1:
+        if self.length(head) == 1:
             return True
-        if self.len(head) == 2:
+        if self.length(head) == 2:
             if head.val == head.next.val:
                 return True
             else:
                 return False
-        if self.len(head) == 3:
+        if self.length(head) == 3:
             if head.val == head.next.next.val:
                 return True
             else:
                 return False
-        marker = 0
-        L = self.len(head)
+        i = 0
+        L = self.length(head)
         if L % 2 == 0:
-            marker = L/2
-        else:
-            marker = int(L/2 + 1)
+            i = int(L/2-1)
+        if L % 2 == 1:
+            i = int(L/2)
 
-        self.reverse(head, marker)
-        return False
+        prev = head
+        while i > 0:
+            prev = prev.next
+            i -= 1
+
+        forward = prev.next
+        t = prev
+
+        while forward:
+            ff = forward.next
+            forward.next = prev
+            prev = forward
+            forward = ff
+        t.next = prev
+
 
 if __name__ == "__main__":
 
     obj = Solution()
 
     head = ListNode(1)
-    print(obj.len(head))
-    r = obj.isPalindrome(head)
-    print(r)
-
-    head = ListNode(1)
-    head.next = ListNode(1)
-    print(obj.len(head))
-    r = obj.isPalindrome(head)
-    print(r)
-
-    head = ListNode(1)
-    head.next = ListNode(2)
-    head.next.next = ListNode(1)
-    print(obj.len(head))
-    r = obj.isPalindrome(head)
-    print(r)
-
-    head = ListNode(1)
-    head.next = ListNode(2)
-    head.next.next = ListNode(9)
-    head.next.next.next = ListNode(1)
-    print(obj.len(head))
-    r = obj.isPalindrome(head)
-    print(r)
-
-    head = ListNode(1)
     head.next = ListNode(2)
     head.next.next = ListNode(3)
-    head.next.next.next = ListNode(8)
-    head.next.next.next.next = ListNode(1)
-    print(obj.len(head))
+    head.next.next.next = ListNode(4)
+    head.next.next.next.next = ListNode(5)
+    obj.printList(head)
+    l = obj.length(head)
     r = obj.isPalindrome(head)
-    print(r)
+    obj.printList(head)
+
 

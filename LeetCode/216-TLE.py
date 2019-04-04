@@ -8,7 +8,7 @@ class Solution:
         total = set()
         def combinationSum(k, n, num, visited):
             if k == 0 and n == 0:
-                total.add(tuple(set(num)))
+                total.add(tuple(sorted(num)))
                 return
 
             for i in range(1,10):

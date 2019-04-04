@@ -1,33 +1,54 @@
 class Solution:
-    def letterCasePermutation(self, S):
-        self.out = []
-        self.capitalizeAndJoin(S, '', 0)
+    def binaryNum(self, N):
 
-        return self.out
-
-    def capitalizeAndJoin(self, s, ans, index):
-        if (index == len(s)):
-            self.out.append(ans)
-            return
-        i = index
-        while (i < len(s)):
-            if s[i].isnumeric():
-                ans += s[i]
+        nums = []
+        def binary(N, prefix):
+            if len(prefix) == N:
+                nums.append(prefix)
+                return
             else:
-                self.capitalizeAndJoin(s, ans + s[i].lower(), i + 1)
-                self.capitalizeAndJoin(s, ans + s[i].upper(), i + 1)
-                break
-            i += 1
+                binary(N, prefix+"0")
+                binary(N, prefix+"1")
 
-        if (i == len(s)):
-            self.out.append(ans)
+        binary(N, "")
+        return nums
 
+    def letterCasePermutation(self, S):
+        L = len(S)
+        c = 0
+        for e in S:
+            if e.isalpha():
+                c +=1
+        bins = self.binaryNum(c)
+
+        result = []
+
+        for b in bins:
+            s1 = list(S)
+            i = 0
+            j = 0
+            while i < c and j < L:
+                if s1[j].isdigit():
+                    j += 1
+                elif s1[j].isalpha():
+                    if b[i] == "0":
+                        l = s1[j]
+                        s1[j] = l.lower()
+                        i += 1
+                        j += 1
+                    elif b[i] == "1":
+                        l = s1[j]
+                        s1[j] = l.upper()
+                        i += 1
+                        j += 1
+            result.append("".join(s1))
+        return result
 
 if __name__ == "__main__":
 
     s = Solution()
 
-    S = "a1b2"
+    S = "1234"
 
     r = s.letterCasePermutation(S)
     print(r)

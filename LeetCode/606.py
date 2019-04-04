@@ -12,14 +12,7 @@ class Solution(object):
         :type t: TreeNode
         :rtype: str
         """
-        print("(", end="")
-        if root == None:
-            return
 
-        print(root.val, end="")
-        self.tree2str(root.left)
-        self.tree2str(root.right)
-        print(")", end="")
 
 if __name__ == "__main__":
 

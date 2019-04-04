@@ -5,21 +5,23 @@ class Solution(object):
         :type order: str
         :rtype: bool
         """
-        order_index = {c: i for i, c in enumerate(order)}
-
-        for i in range(len(words)-1):
+        ordindex = {c: i for i, c in enumerate(order)}
+        wlen = len(words)
+        for i in range(wlen-1):
             word1 = words[i]
             word2 = words[i+1]
 
-            for k in range(min(len(word1), len(word2))):
-                if word1[k] != word2[k]:
-                    if order_index[word1[k]] > order_index[word2[k]]:
+            minlen = min(len(word1), len(word2))
+
+            for j in range(minlen):
+                if word1[j] != word2[j]:
+                    if ordindex.get(word1[j]) > ordindex.get(word2[j]):
                         return False
-                else:
-                    if len(word1) > len(word2):
-                        pass
-
-
+                    break
+            else:
+                if len(word1) > len(word2):
+                    return False
+        return True
 
 if __name__ == "__main__":
 
@@ -27,4 +29,5 @@ if __name__ == "__main__":
     words = ["hello", "leetcode"]
     order = "hlabcdefgijkmnopqrstuvwxyz"
 
-    obj.isAlienSorted(words, order)
+    r = obj.isAlienSorted(words, order)
+    print(r)

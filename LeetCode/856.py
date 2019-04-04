@@ -1,16 +1,27 @@
 class Solution(object):
     def scoreOfParentheses(self, S):
-        """
-        :type S: str
-        :rtype: int
-        """
+
+        i = 0
+        L = len(S)
         stk = []
-        for c in S:
-            if not stk:
-                stk.append(c)
-            elif c == "(":
-                stk.append(c)
-            elif c 
+        while i < L:
+            j = 0
+            while True:
+                if S[i] == "(":
+                    stk.append(S[i])
+                    i += 1
+                else:
+                    break
+
+            print(stk)
+            while stk:
+                if S[i] == ")" and stk[-1] == "(":
+                    stk.pop()
+                    i += 1
+                    j += 1
+                else:
+                    break
+            print(stk)
 
 if __name__ == "__main__":
 

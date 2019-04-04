@@ -5,23 +5,24 @@ class Solution(object):
         :type sentence: str
         :rtype: str
         """
-        successprs  = sentence.split()
-        rsmap = {}
+        words  = sentence.split()
+        L = len(words)
         for root in dict:
-            r = []
-            for word in successprs:
-                if root in word:
-                    r.append(word)
-            rsmap.update({root: sorted(r, key=lambda x:len(x))})
-
-
-
+            i = 0
+            l = len(root)
+            print(root)
+            while i < L:
+                if len(words[i]) > l and words[i][0:l] == root:
+                    words[i] = root
+                i += 1
+        return " ".join(words)
 
 if __name__ == "__main__":
 
     s = Solution()
 
     dict = ["cat", "bat", "rat"]
-    sentence = "the cattle was rattled by the batteryy battery"
-    s.replaceWords(dict, sentence)
+    sentence = "the cattle was rattled by the batteryy"
+    r = s.replaceWords(dict, sentence)
+    print(r)
 

@@ -1,23 +1,15 @@
 class FreqStack:
 
     def __init__(self):
-        self.fdict = {}
-        self.stack = []
+        pass
 
-    def push(self, x):
-        """
-        :type x: int
-        :rtype: void
-        """
-        
+    def push(self, x: int) -> None:
+        pass
+    def pop(self) -> int:
+        pass
 
+if __name__ == "__main__":
 
-    def pop(self):
-        """
-        :rtype: int
-        """
+    pass
 
 
-obj = FreqStack()
-obj.push(x)
-param_2 = obj.pop()

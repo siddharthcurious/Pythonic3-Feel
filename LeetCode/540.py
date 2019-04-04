@@ -4,30 +4,50 @@ class Solution:
         :type nums: List[int]
         :rtype: int
         """
+        L = len(A)
 
-        def find_single(nums):
-            L = len(nums)
-            if L == 1:
-                return nums[0]
-            m = L//2
-            if nums[m+1] != nums[m] and nums[m-1] != nums[m]:
-                return nums[m]
+        def binarySearch(A, start, end):
+            if start == end:
+                return A[start]
 
-            elif nums[m] == nums[m+1]:
-                pass
+            if start < end:
 
-            elif nums[m-1] == nums[m]:
-                if (m-1) % 2 == 0:
-                    return find_single(nums[m+1:])
-                else:
-                    return find_single(nums[:m-1])
+                mid = int(start + (end - start)/2)
 
-        n = find_single(nums)
-        print(n)
+                if A[mid-1] < A[mid] < A[mid+1]:
+                    return A[mid]
+                if end - start == 2:
+                    if A[end] != A[end-1]:
+                        return A[end]
+                if end - start == 2:
+                    if A[start] != A[start+1]:
+                        return A[start]
+
+                elif A[mid-1] == A[mid]:
+                    if A[end-1] == A[end]:
+                        return binarySearch(A, start, mid-2)
+                    elif A[mid+1] == A[mid+2]:
+                        return binarySearch(A, mid+3, end)
+                    else:
+                        return binarySearch(A, mid+1, end)
+                elif A[mid] == A[mid+1]:
+                    if A[start] == A[start+1]:
+                        return binarySearch(A, mid+2, end)
+                    elif A[mid-2] == A[mid-1]:
+                        return binarySearch(A, start, mid-3)
+                    else:
+                        return binarySearch(A, start, mid-1)
+
+        return binarySearch(A, 0, L-1)
+
 
 if __name__ == "__main__":
 
     s = Solution()
+    A = [1,1,2,3,3,4,4,5,5]
+    A = [1,1,2,2,3,3,4,5,5]
+    A = [1,1,2,3,3,4,4,8,8]
     A = [3,3,7,7,10,11,11]
-    # B = [1,1,2,3,3,4,4,8,8]
-    s.singleNonDuplicate(A)
+
+    r = s.singleNonDuplicate(A)
+    print(r)
