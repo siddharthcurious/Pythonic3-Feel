@@ -7,4 +7,4 @@ def permute(input, prefix):
 
 if __name__ == "__main__":
 
-    permute("ASDF", "")
+    permute("AS", "")

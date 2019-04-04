@@ -11,12 +11,14 @@ def lcs_print(A, B, L1, L2):
             else:
                 matrix[i][j] = max(matrix[i][j-1], matrix[i-1][j])
     print(numpy.matrix(matrix))
+    return matrix[L1][L2]
 
 if __name__ == "__main__":
 
-    A = "AXAALBCD"
-    B = "XALBDO"
+    A = "XALBCDKL"
+    B = "XALBDOLKL"
     L1 = len(A)
     L2 = len(B)
 
-    lcs_print(A, B, L1, L2)
+    r = lcs_print(A, B, L1, L2)
+    print(r)
