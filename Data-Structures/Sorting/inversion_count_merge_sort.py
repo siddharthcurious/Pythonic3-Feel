@@ -37,6 +37,7 @@ if __name__ == "__main__":
 
     arr = [1, 2, 4, 3, 6, 5, 9, 8, 7]
     arr = [1, 2, 3, 7, 5, 6, 9, 8, 4]
+    arr = [4,1,5,2,3]
     r = mergesort(arr)
     print(arr)
     print(r)
